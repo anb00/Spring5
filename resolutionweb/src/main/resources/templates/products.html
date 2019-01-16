@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework index</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+   <!-- <div th:if="${not #lists.isEmpty(products)}"> -->
+    <div>
+        <h2>Product List</h2>
+        <table class="table table-striped" >
+            <tr>
+                <th>Imagen </th>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>View</th>
+                <th>Edit</th>
+            </tr>
+            <tr th:each="product : ${products}">
+               <td> <img class="img-thumbnail"  src="//imgcy.trivago.com/c_fill,d_dummy.jpeg,f_auto,h_225,q_auto:eco,w_225/itemimages/13/21/1321090_v10.jpeg" itemprop="photo" decoding="async" draggable="false" height="150" width="150">
+               </td>
+                <td th:text="${product.id}">Id</td>
+
+
+               <!-- <td th:text="${product.description}">description</td> -->
+                <td th:text="${product.price}">price</td>
+                <td><a th:href="${ '/product/' + product.id}">View</a></td>
+                <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
